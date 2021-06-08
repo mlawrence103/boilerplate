@@ -4,8 +4,56 @@
   "description": "boilerplate code to start new projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "build:dev": "npm run build -- --watch --mode=development",
+    "seed": "node script/seed.js",
+    "start": "node server",
+    "start:dev": "npm run build:dev & npm run start-server",
+    "start:dev:logger": "LOGGING=true npm run start:dev",
+    "start:dev:seed": "SEED=true npm run start:dev",
+    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "test": "NODE_ENV=test JWT=a_secret mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" --require @babel/register --require esm ",
+    "test:dev": "npm run test -- --watch",
+    "test:dev:models": "npm run test:dev -- --grep=model",
+    "test:dev:routes": "npm run test:dev -- --grep=route"
   },
   "author": "Mabel Lawrence",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlawrence103/boilerplate.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/mlawrence103/boilerplate/issues"
+  },
+  "homepage": "https://github.com/mlawrence103/boilerplate#readme"
 }

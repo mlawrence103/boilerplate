@@ -1,0 +1,5 @@
+{
+  //use things that have reached stage 2 approval and are
+  //likely to be adopted
+  "presets": ["@babel/preset-react"]
+}
