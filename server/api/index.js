@@ -11,6 +11,8 @@ router.use('/examples', require('./examples'));
 // middleware will generate a 404, and send it to your
 // error-handling endware!
 
+router.use('/auth', require('./auth'));
+
 router.use((req, res, next) => {
   const err = new Error('API route not found!');
   err.status = 404;
